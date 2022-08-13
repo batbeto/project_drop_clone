@@ -1,4 +1,5 @@
 class DropBoxController {
+  
   constructor() {
     this.btnSendFileEl = document.querySelector("#btn-send-file");
     this.inputFilesEl = document.querySelector("#files");
@@ -9,11 +10,22 @@ class DropBoxController {
 
     this.connectFirebase()
     this.initEvents();
+    this.readFiles();
   }
 
   connectFirebase() {
-    // Coloque as informações do seu banco de dados aqui.
-    // firebase.initializeApp(firebaseConfig);
+    var config = {
+      apiKey: "AIzaSyCeyv-bqkL1gJnUtINR3Ytq2q_84x9UYdo",
+      authDomain: "dropbox-clone-28587.firebaseapp.com",
+      databaseURL: "https://dropbox-clone-28587-default-rtdb.firebaseio.com",
+      projectId: "dropbox-clone-28587",
+      storageBucket: "dropbox-clone-28587.appspot.com",
+      messagingSenderId: "866900864251",
+      appId: "1:866900864251:web:c544328802b1a9ad85945e"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(config);
   }
 
   initEvents() {
@@ -302,4 +314,14 @@ class DropBoxController {
     `
   }
 
+  readFiles() {
+    this.getFirebaseRef().on('value', snapshot => {
+      snapshot.forEach(snapshotItem => {
+        let key = snapshotItem.key;
+        let dados = snapshotItem.val();
+        console.log(key,data)
+
+      });
+    });
+  }
 }
