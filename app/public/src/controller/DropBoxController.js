@@ -8,24 +8,24 @@ class DropBoxController {
     this.nameFileEl = this.snackModalEl.querySelector('.filename')
     this.timeleftEl = this.snackModalEl.querySelector('.timeleft')
 
-    this.connectFirebase()
+    this.connectFirebase();
     this.initEvents();
     this.readFiles();
   }
 
   connectFirebase() {
-    var config = {
-      apiKey: "AIzaSyCeyv-bqkL1gJnUtINR3Ytq2q_84x9UYdo",
-      authDomain: "dropbox-clone-28587.firebaseapp.com",
-      databaseURL: "https://dropbox-clone-28587-default-rtdb.firebaseio.com",
-      projectId: "dropbox-clone-28587",
-      storageBucket: "dropbox-clone-28587.appspot.com",
-      messagingSenderId: "866900864251",
-      appId: "1:866900864251:web:c544328802b1a9ad85945e"
+    const firebaseConfig = {
+      apiKey: "AIzaSyBcyV2JW5YtX1O_qHOhZg6X-j4w0Bidlis",
+      authDomain: "dropbox-clone-cb2ad.firebaseapp.com",
+      projectId: "dropbox-clone-cb2ad",
+      storageBucket: "dropbox-clone-cb2ad.appspot.com",
+      messagingSenderId: "170241397731",
+      appId: "1:170241397731:web:e35d39d15abb7d1e7f06d6",
+      measurementId: "G-8C0HYYEJLH"
     };
 
     // Initialize Firebase
-    firebase.initializeApp(config);
+    firebase.initializeApp(firebaseConfig);
   }
 
   initEvents() {
@@ -309,7 +309,7 @@ class DropBoxController {
     return `
       <li>
         ${this.getFileIconView(file)}
-        <div class="name text-center">${file.name}s</div>
+        <div class="name text-center">${file.name}</div>
       </li>
     `
   }
@@ -318,7 +318,7 @@ class DropBoxController {
     this.getFirebaseRef().on('value', snapshot => {
       snapshot.forEach(snapshotItem => {
         let key = snapshotItem.key;
-        let dados = snapshotItem.val();
+        let data = snapshotItem.val();
         console.log(key,data)
 
       });
